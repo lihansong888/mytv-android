@@ -1,5 +1,8 @@
 package top.yogiczy.mytv.ui.screens.leanback.settings.components
 
+import androidx.compose.ui.draw.alpha
+import androidx.compose.foundation.layout.height
+import androidx.compose.ui.focus.focusProperties
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -123,8 +126,12 @@ fun LeanbackSettingsCategoryIptv(
             var showDialog by remember { mutableStateOf(false) }
 
             LeanbackSettingsCategoryListItem(
+                modifier = Modifier
+                    .alpha(0f)
+                    .height(0.dp)
+                    .focusProperties { canFocus = false },
                 headlineContent = "自定义直播源",
-                supportingContent = if (settingsViewModel.iptvSourceUrl != Constants.IPTV_SOURCE_URL) settingsViewModel.iptvSourceUrl else null,
+                supportingContent = null,
                 trailingContent = if (settingsViewModel.iptvSourceUrl != Constants.IPTV_SOURCE_URL) "已启用" else "未启用",
                 onSelected = { showDialog = true },
                 remoteConfig = true,
@@ -223,7 +230,7 @@ private fun LeanbackSettingsIptvSourceHistoryDialog(
                             onClick = { },
                             headlineContent = {
                                 androidx.tv.material3.Text(
-                                    text = if (source == Constants.IPTV_SOURCE_URL) "默认直播源（网络需要支持ipv6）" else source,
+                                    text = if (source == Constants.IPTV_SOURCE_URL) "默认直播源" else "自定义源",
                                     modifier = Modifier.fillMaxWidth(),
                                     maxLines = if (isFocused) Int.MAX_VALUE else 2,
                                 )
