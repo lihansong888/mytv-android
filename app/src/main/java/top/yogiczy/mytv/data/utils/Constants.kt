@@ -38,7 +38,7 @@ object Constants {
      * Git最新版本信息
      */
     const val GIT_RELEASE_LATEST_URL =
-        "https://api.github.com/repos/yaoxieyoulei/mytv-android/releases/latest"
+        "https://lihansong.top/tvzy/update.json"
 
     /**
      * GitHub加速代理地址

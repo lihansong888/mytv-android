@@ -18,6 +18,7 @@ interface GitReleaseParser {
 
     companion object {
         val instances = listOf(
+            ServerGitReleaseParser(),
             GithubGitReleaseParser(),
             GiteeGitReleaseParser(),
         )
